@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./style.css";
 
 
@@ -18,14 +19,15 @@ function Favoritos() {
 
 
 
-function handlerExcluirItem(id){
-
+function handlerExcluirItem(id, title){
+    
     let novaLista = filmes.filter((item)=>{
         if (item.id!==id) return item;
     });
-
+    
     setFilmes(novaLista);
-    localStorage.setItem("@primeflix", JSON.stringify(novaLista))
+    localStorage.setItem("@primeflix", JSON.stringify(novaLista));
+    toast.success(title+" removido!")
 
 }
 
@@ -46,7 +48,7 @@ function handlerExcluirItem(id){
                             <span>{filme.title}</span>
                             <div>
                             <Link to={`/filme/${filme.id}`}>Ver detalhes</Link>
-                            <button onClick={()=>{handlerExcluirItem(filme.id)}}>Excluir</button>
+                            <button onClick={()=>{handlerExcluirItem(filme.id, filme.title)}}>Excluir</button>
                             </div>
                         </li>
                     );
