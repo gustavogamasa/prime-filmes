@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import Filme from "./pages/Filme";
 import Home from "./pages/Home";
 import ErroPageNotFound from "./pages/ErroPageNotFound"
+import Favoritos from "./pages/Favoritos";
 
 
 function RoutesApp() {
@@ -15,6 +16,7 @@ function RoutesApp() {
                 <Route path="/" element={<Home />} />
                 <Route path="/filme/:id" element={<Filme />} />
 
+                <Route path='/favoritos' element={<Favoritos />} />
                 <Route path="*" element={<ErroPageNotFound />} />
             </Routes>
         </BrowserRouter>
